@@ -282,6 +282,9 @@
         (map (partial map :survived))
         (information-gain)))
 
+;; Printed book lists example above as ex-4-205
+(def ex-4-205 ex-4-34)
+
 (defn ex-4-35 []
    (->> (load-data "titanic.tsv")
         (:rows)
