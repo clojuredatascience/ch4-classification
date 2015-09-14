@@ -249,6 +249,9 @@
          y-hats (map classify data)]
      (confusion-matrix ys y-hats)))
 
+;; Printed book lists example above as ex-4-195
+(def ex-4-195 ex-4-29)
+
 (defn ex-4-30 []
    (let [red-black (concat (repeat 26 1)
                            (repeat 26 0))]
@@ -258,6 +261,9 @@
    (let [picture-not-picture (concat (repeat 12 1)
                                      (repeat 40 0))]
      (entropy picture-not-picture)))
+
+;; Printed book lists example above as ex-4-202
+(def ex-4-202 ex-4-31)
 
 
 (defn ex-4-32 []
