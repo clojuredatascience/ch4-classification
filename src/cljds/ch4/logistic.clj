@@ -30,23 +30,3 @@
     (-> (o/minimize cost-fn init-coefs)
         (:value)
         (i/to-vect))))
-
-(defn logistic-g [logistic ys xs]
-  (let [g (fn [y x]
-            (i/mmult x (- (logistic x) y)))]
-    (->> (map g ys xs)
-         (i/trans)
-         (map s/mean))))
-
-(defn logistic-regression-2 [ys xs]
-  (let [cost-fn (fn [coefs]
-                  (let [classify (sigmoid-function coefs)
-                        y-hats   (map (comp classify i/trans) xs)]
-                    (logistic-cost ys y-hats)))
-        grad-fn (fn [coefs]
-                  (let [classifier (sigmoid-function coefs)]
-                    (logistic-g classifier ys (map i/trans xs))))
-        init-coefs (repeat (i/ncol xs) 0.5)]
-    (-> (o/minimize cost-fn init-coefs :f-prime grad-fn)
-        (:value)
-        (i/to-vect))))
